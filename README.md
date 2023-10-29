@@ -1,7 +1,7 @@
 ## neu-javaWeb 简介
 
 - javaweb大作业的要求
-- 实现的功能(仅完成部分功能)
+- 实现的功能(未全部完成)及部署
 - 仅为记录学习过程
 
 ## 大作业要求
@@ -56,8 +56,34 @@
 - Web服务器：maven插件Tomcat 7
 - 可使用IDEA集成的Maven工具构建工程依赖
 
+## 部分功能演示
+- 学生登陆后选课界面
+<img width="405" alt="image" src="https://github.com/yrDong/neu-javaweb/assets/140315711/46be3088-fe03-482f-af71-ddac6c444b16">
+
+- 审批进度查询  
+<img width="480" alt="image" src="https://github.com/yrDong/neu-javaweb/assets/140315711/23409c24-5d1d-42d8-85de-2a8e1e46128b">
+  
+- 管理员对系统用户管理
+<img width="305" alt="image" src="https://github.com/yrDong/neu-javaweb/assets/140315711/3cbff1e9-dd2b-4d54-af46-d1f4b32c7ad3">
+  
+- 管理员查询用户信息
+<img width="404" alt="image" src="https://github.com/yrDong/neu-javaweb/assets/140315711/27d2ea71-ac9b-4a63-b08b-70f3697584a2">
+  
+- 管理员对所有申请和审批记录增删改查
+<img width="483" alt="image" src="https://github.com/yrDong/neu-javaweb/assets/140315711/6ed1ea13-7b78-4cbb-9c0a-0ff743355659">
+  
+
+
 ## 安装使用说明
 ### 代码简单部署  
 - 用idea打开web01文件，使用maven内置的tomcat启动，[登陆界面http://localhost:8090/web01/html/userLogin.html](http://localhost:8090/web01/html/userLogin.html)
 ### 数据库脚本
 - 执行web01_sql脚本文件
+
+## 完成度介绍
+- 完成了基础功能，审批流未完成，未使用docker
+- 创新点
+   - 使用html+ajax代替jsp,实现前后端分离，使用Vue和element-ui使界面美观
+   - 使用maven的pom.xml配置开发,使用依赖坐标导包，避免复杂工程时找包，导包麻烦的问题
+   - 使用mybatis和mapper代理开发
+
