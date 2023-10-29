@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+  <style>
+    .el-header, .el-footer {
+      background-color: #B3C0D1;
+      color: #333;
+      text-align: center;
+      line-height: 60px;
+    }
+
+  </style>
+
+
+</head>
+<body>
+
+<div id="app">
+  <el-container>
+    <el-header>欢迎使用在线课程申请和审批系统</el-header>
+    <el-main>
+<!--user表单-->
+<el-form ref="form" :model="user" label-width="80px">
+  <el-form-item label="用户名">
+    <el-input v-model="user.username"></el-input>
+  </el-form-item>
+  <el-form-item label="密码">
+    <el-input v-model="user.password"></el-input>
+  </el-form-item>
+
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit">登录</el-button>
+    <el-button>取消</el-button>
+  </el-form-item>
+</el-form>
+    </el-main>
+  </el-container>
+</div>
+
+<script src="../js/vue.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../element-ui/lib/index.js"></script>
+<link rel="stylesheet" href="../element-ui/lib/theme-chalk/index.css">
+
+<script>
+      new Vue({
+        el:"#app",
+        methods:{
+          /*登录验证*/
+          onSubmit(){
+            axios({
+              method: "post",
+              url: "http://localhost:8090/web01/user/login",
+              data: this.user
+            }).then(resp => {
+              if (resp.data != null) {
+                var user = resp.data;
+                if(user.role=== "学生") {
+                  window.location.href = "http://localhost:8090/web01/html/stuMain.html?user=" + encodeURIComponent(JSON.stringify(user));
+                }else if(user.role==="主讲教师"){
+                  window.location.href = "http://localhost:8090/web01/html/lecturerMain.html?user=" + encodeURIComponent(JSON.stringify(user));
+                }else if(user.role==="主管教师"){
+                  window.location.href = "http://localhost:8090/web01/html/masterMain.html?user=" + encodeURIComponent(JSON.stringify(user));
+                }else if(user.role==="管理员"){
+                  window.location.href = "http://localhost:8090/web01/html/managerCheckUser.html"
+                }
+
+              }else{
+                //消息提示
+                this.$message({
+                  message: '登录失败',
+                  type: 'false'
+                });
+              }
+            })
+          }
+
+        },
+        data(){
+          return{
+            //用户信息数据
+            user:{
+              id:'',
+              name:'',
+              role:"",
+              username:"",
+              password:"",
+            }
+          }
+
+      }
+      })
+</script>
+</body>
+</html>

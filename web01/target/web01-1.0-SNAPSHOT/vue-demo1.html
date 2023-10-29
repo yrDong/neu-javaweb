@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <!--v-model-->
+  <input v-model="username">
+  <!--差值表达式-->
+  {{username}}
+  <!--v-bind-->
+  <a :href="url">点击一下</a>
+
+  <input v-model="url">
+  <!--v-on-->
+  <input type="button" value="一个按钮" ><br>
+  <input type="button" value="一个按钮" @click="show()">
+<!--v-if,v-show-->
+  <div v-if="count==3">div1</div>
+  <div v-else-if="count==4">div2</div>
+  <div v-else v-else>div3</div>
+
+  <hr>
+
+  <!--渲染方式不同-->
+  <div v-show="count==3">div v-show</div>
+  <br>
+  <input v-model="count">
+
+  <hr>
+<!--v-form-->
+  <div v-for="addr in addrs">
+    {{addr}}<br>
+  </div>
+
+  <hr>
+
+  <div v-for="(addr,i) in addrs">
+    {{i+1}}--{{addr}}<br>
+  </div>
+
+</div>
+
+<script src="js/vue.js"></script>
+
+<script>
+
+  new Vue({
+    el:"#app",
+    data(){
+      return{
+        username:"",
+        url:"http://www.baidu.com",
+        count:3,
+        addrs:["北京","上海","西安"]
+      }
+    },
+    methods:{
+      show(){
+        alert("我被点了");
+      }
+    },
+    mounted(){
+      alert("加载完成");
+    }
+  })
+
+</script>
+</body>
+</html>

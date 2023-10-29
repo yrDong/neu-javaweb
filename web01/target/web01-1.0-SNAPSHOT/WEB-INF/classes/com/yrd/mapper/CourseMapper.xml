@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace  名称标签-->
+<mapper namespace="com.yrd.mapper.CourseMapper">
+    <insert id="addCourse">
+        insert into tb_course( name, lecturerName, masterName, description) values (#{name},#{lecturerName},#{masterName},#{description});
+    </insert>
+
+    <update id="modifyCourse">
+        update tb_course
+        <set>
+            <if test="name != null and name !=''">
+                name =#{name},
+            </if>
+            <if test="lecturerName != null and lecturerName !=''">
+                lecturerName=#{lecturerName},
+            </if>
+            <if test="masterName != null and masterName !=''">
+                masterName=#{masterName},
+            </if>
+            <if test="description != null and description !=''">
+                description=#{description},
+            </if>
+        </set>
+        where id=#{id};
+    </update>
+
+    <delete id="deleteByIds">
+        delete from tb_course where id
+        in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+        ;
+    </delete>
+
+    <!--statement-->
+    <select id="selectAllCourse" resultType="Course">
+        select * from tb_course ;
+    </select>
+
+    <select id="selectCourseByPage" resultType="Course">
+        select * from tb_course limit #{begin}, #{size};
+    </select>
+    
+    <select id="selectCourseTotalCount" resultType="java.lang.Integer">
+        select count(*) from tb_course;
+    </select>
+    
+    <select id="selectCourseByPageAndCondition" resultType="Course">
+        select *
+        from tb_course
+        <where>
+            <if test="course.name != null and course.name !=''">
+                name like #{course.name}
+            </if>
+            <if test="course.lecturerName != null and course.lecturerName !=''">
+                and lecturerName like #{course.lecturerName}
+            </if>
+            <if test="course.masterName != null and course.masterName !=''">
+                and masterName like #{course.masterName}
+            </if>
+        </where>
+
+        limit #{begin},#{size} ;
+
+    </select>
+
+    <select id="selectCourseTotalCountByCondition" resultType="java.lang.Integer">
+        select count(*)
+        from tb_course
+        <where>
+            <if test="name != null and name !=''">
+                name like #{name}
+            </if>
+            <if test="lecturerName != null and lecturerName !=''">
+                and lecturerName like #{lecturerName}
+            </if>
+            <if test="masterName != null and masterName !=''">
+                and masterName like #{masterName};
+            </if>
+        </where>
+    </select>
+
+</mapper>

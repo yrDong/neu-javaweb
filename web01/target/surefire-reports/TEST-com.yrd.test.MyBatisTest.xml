@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="9" failures="0" name="com.yrd.test.MyBatisTest" time="1.603" errors="0" skipped="0">
+  <properties>
+    <property name="idea.version" value="2021.1.3"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="java.vm.version" value="16+36-2231"/>
+    <property name="sun.boot.library.path" value="D:\openjdk-16+36_windows-x64_bin\jdk-16\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:\web01"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\web01"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.runtime.version" value="16+36-2231"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\yrd\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="maven.ext.class.path" value="D:\IDEA\IntelliJ IDEA 2021.1.3\plugins\maven\lib\maven-event-listener.jar"/>
+    <property name="classworlds.conf" value="D:\IDEA\IntelliJ IDEA 2021.1.3\plugins\maven\lib\maven3\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\openjdk-16+36_windows-x64_bin\jdk-16\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Server 8.0\bin;D:\javaweb\apache-tomcat-9.0.73\bin;D:\openjdk-16+36_windows-x64_bin\jdk-16\bin;D:\javaweb\apache-maven-3.9.1\bin;C:\Users\yrd\AppData\Local\Microsoft\WindowsApps;C:\Users\yrd\.dotnet\tools;C:\Program Files\JetBrains\PyCharm Community Edition 2022.2.2\bin;;D:\LenovoSoftstore\Install\QQliuxidating\QQGameTempest\Hall.57808\;;D:\IDEA\IntelliJ IDEA 2021.1.3\bin;;."/>
+    <property name="maven.conf" value="D:\IDEA\IntelliJ IDEA 2021.1.3\plugins\maven\lib\maven3/conf"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="60.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\yrd"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="16"/>
+    <property name="user.name" value="yrd"/>
+    <property name="java.class.path" value="D:\IDEA\IntelliJ IDEA 2021.1.3\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;D:\IDEA\IntelliJ IDEA 2021.1.3\plugins\maven\lib\maven3\boot\plexus-classworlds.license"/>
+    <property name="java.vm.specification.version" value="16"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2021.1.3 install"/>
+    <property name="java.home" value="D:\openjdk-16+36_windows-x64_bin\jdk-16"/>
+    <property name="user.language" value="zh"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="16"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="D:\IDEA\IntelliJ IDEA 2021.1.3\plugins\maven\lib\maven3"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.version.date" value="2021-03-16"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="com.yrd.test.MyBatisTest" name="com.yrd.test.MyBatisTest.testSelecByCondition" time="1.145"/>
+  <testcase classname="com.yrd.test.MyBatisTest" name="com.yrd.test.MyBatisTest.testSelecByConditionSingle" time="0.072"/>
+  <testcase classname="com.yrd.test.MyBatisTest" name="com.yrd.test.MyBatisTest.testupdata" time="0.067"/>
+  <testcase classname="com.yrd.test.MyBatisTest" name="com.yrd.test.MyBatisTest.testAdd" time="0.061"/>
+  <testcase classname="com.yrd.test.MyBatisTest" name="com.yrd.test.MyBatisTest.testdeleteById" time="0.05"/>
+  <testcase classname="com.yrd.test.MyBatisTest" name="com.yrd.test.MyBatisTest.testzhujie" time="0.028"/>
+  <testcase classname="com.yrd.test.MyBatisTest" name="com.yrd.test.MyBatisTest.testSelecById" time="0.055"/>
+  <testcase classname="com.yrd.test.MyBatisTest" name="com.yrd.test.MyBatisTest.testSelectAll" time="0.06"/>
+  <testcase classname="com.yrd.test.MyBatisTest" name="com.yrd.test.MyBatisTest.testdeleteByIds" time="0.065"/>
+</testsuite>

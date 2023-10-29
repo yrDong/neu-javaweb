@@ -1,0 +1,11 @@
+0:0:0:0:0:0:0:1 - - [29/Oct/2023:15:14:55 +0800] "GET /web01 HTTP/1.1" 302 - http-bio-8090-exec-1 0
+0:0:0:0:0:0:0:1 - - [29/Oct/2023:15:14:55 +0800] "GET /web01/ HTTP/1.1" 200 215 http-bio-8090-exec-3 77
+0:0:0:0:0:0:0:1 - - [29/Oct/2023:15:14:55 +0800] "GET /web01/html/userLogin.html HTTP/1.1" 200 2776 http-bio-8090-exec-4 8
+0:0:0:0:0:0:0:1 - - [29/Oct/2023:15:14:55 +0800] "GET /web01/js/axios-0.18.0.js HTTP/1.1" 200 12948 http-bio-8090-exec-2 6
+0:0:0:0:0:0:0:1 - - [29/Oct/2023:15:14:55 +0800] "GET /web01/js/vue.js HTTP/1.1" 200 341462 http-bio-8090-exec-5 15
+0:0:0:0:0:0:0:1 - - [29/Oct/2023:15:14:55 +0800] "GET /web01/element-ui/lib/theme-chalk/index.css HTTP/1.1" 200 232460 http-bio-8090-exec-7 16
+0:0:0:0:0:0:0:1 - - [29/Oct/2023:15:14:55 +0800] "GET /web01/element-ui/lib/index.js HTTP/1.1" 200 567058 http-bio-8090-exec-6 24
+0:0:0:0:0:0:0:1 - - [29/Oct/2023:15:15:58 +0800] "POST /web01/user/login HTTP/1.1" 200 74 http-bio-8090-exec-3 1696
+0:0:0:0:0:0:0:1 - - [29/Oct/2023:15:15:58 +0800] "GET /web01/html/stuMain.html?user=%7B%22id%22%3A1%2C%22name%22%3A%22%E5%BC%A0%E4%B8%89%22%2C%22password%22%3A%22123%22%2C%22role%22%3A%22%E5%AD%A6%E7%94%9F%22%2C%22username%22%3A%22001%22%7D HTTP/1.1" 200 11272 http-bio-8090-exec-3 3
+0:0:0:0:0:0:0:1 - - [29/Oct/2023:15:15:58 +0800] "GET /web01/element-ui/lib/theme-chalk/fonts/element-icons.woff HTTP/1.1" 200 28200 http-bio-8090-exec-2 10
+0:0:0:0:0:0:0:1 - - [29/Oct/2023:15:15:58 +0800] "POST /web01/course/selectCourseByPageAndCondition?currentPage=1&pageSize=5 HTTP/1.1" 200 568 http-bio-8090-exec-3 159

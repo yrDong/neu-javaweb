@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace  名称标签-->
+<mapper namespace="com.yrd.mapper.UserMapper">
+    <update id="modifyUser">
+        update tb_user
+        <set>
+            <if test="name != null and name !=''">
+                name =#{name},
+            </if>
+            <if test="role != null and role !=''">
+                role=#{role},
+            </if>
+            <if test="username != null and username !=''">
+                username=#{username},
+            </if>
+            <if test="password != null and password !=''">
+                password=#{password},
+            </if>
+        </set>
+        where id=#{id};
+    </update>
+
+    <delete id="deleteByIds">
+        delete from tb_user where id
+        in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+        ;
+    </delete>
+
+
+    <select id="select" resultType="User">
+        select * from tb_user where username = #{username} and password = #{password};
+    </select>
+
+    <select id="selectByUsername" resultType="User">
+        select *
+        from tb_user where username = #{username};
+
+    </select>
+
+    <select id="selectAllUser" resultType="com.yrd.pojo.User">
+        select *
+        from tb_user
+        <where>
+            <if test="user.name != null and user.name !=''">
+                name like #{user.name}
+            </if>
+            <if test="user.username != null and user.username !=''">
+                and username like #{user.username}
+            </if>
+            <if test="user.role != null and user.role !=''">
+                and role = #{user.role}
+            </if>
+        </where>
+
+        limit #{begin},#{size} ;
+
+    </select>
+    <select id="selectUserCount" resultType="java.lang.Integer">
+        select count(*)
+        from tb_user
+        <where>
+            <if test="name != null and name !=''">
+                name like #{name}
+            </if>
+            <if test="username != null and username !=''">
+                and username like #{username}
+            </if>
+            <if test="role != null and role !=''">
+                and role = #{role}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addUser">
+        insert into tb_user( name, role, username, password) values (#{name},#{role},#{username},#{password});
+    </insert>
+</mapper>

@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace  名称标签-->
+<mapper namespace="com.yrd.mapper.ApplicationMapper">
+
+    <insert id="addApplication">
+        insert into tb_application(courseName, stuName, lecturerName, masterName, reason, status)
+        values (#{courseName},#{stuName},#{lecturerName},#{masterName},#{reason},#{status});
+    </insert>
+
+    <update id="agreeApplication">
+        update tb_application
+        <set>
+            <if test="status != null">
+                status=#{status} + 1
+            </if>
+
+        </set>
+        where id=#{id};
+    </update>
+
+    <update id="rejectApplication">
+        update tb_application
+        <set>
+            <if test="reason != null and reason !=''">
+                reason = #{reason},
+            </if>
+            <if test="status != null">
+                status = 0
+            </if>
+        </set>
+        where id=#{id};
+    </update>
+
+    <update id="modifyApplication">
+        update tb_application
+        <set>
+            <if test="courseName != null and courseName !=''">
+                courseName =#{courseName},
+            </if>
+            <if test="lecturerName != null and lecturerName !=''">
+                lecturerName=#{lecturerName},
+            </if>
+            <if test="masterName != null and masterName !=''">
+                masterName=#{masterName},
+            </if>
+            <if test="reason != null and reason !=''">
+               reason=#{reason},
+            </if>
+            <if test="status != null ">
+                status = #{status}
+            </if>
+        </set>
+        where id=#{id};
+    </update>
+
+    <delete id="deleteByIds">
+        delete from tb_application where id
+        in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+        ;
+    </delete>
+
+    <select id="judge" resultType="Application">
+        select * from tb_application where courseName = #{courseName} and stuName = #{stuName};
+    </select>
+
+    <select id="selectApplicationIng" resultType="Application">
+    select *
+    from tb_application
+    <where>
+        <if test="application.courseName != null and application.courseName !=''">
+            courseName like #{application.courseName}
+        </if>
+        <if test="application.lecturerName != null and application.lecturerName !=''">
+            and lecturerName like #{application.lecturerName}
+        </if>
+        <if test="application.masterName != null and application.masterName !=''">
+            and masterName like #{application.masterName}
+        </if>
+            and stuName = #{userName}
+            and status in (1,2,3)
+
+    </where>
+    limit #{begin},#{size} ;
+    </select>
+
+    <select id="selectTotalCountIng" resultType="java.lang.Integer">
+        select count(*)
+        from tb_application
+        <where>
+            <if test="application.courseName != null and application.courseName !=''">
+                courseName like #{application.courseName}
+            </if>
+            <if test="application.lecturerName != null and application.lecturerName !=''">
+                and lecturerName like #{application.lecturerName}
+            </if>
+            <if test="application.masterName != null and application.masterName !=''">
+                and masterName like #{application.masterName}
+            </if>
+            and stuName = #{userName}
+            and status in (1,2,3)
+        </where>
+    </select>
+
+    <select id="selectApplicationEd" resultType="com.yrd.pojo.Application">
+    select *
+    from tb_application
+    <where>
+        <if test="application.courseName != null and application.courseName !=''">
+            courseName like #{application.courseName}
+        </if>
+        <if test="application.lecturerName != null and application.lecturerName !=''">
+            and lecturerName like #{application.lecturerName}
+        </if>
+        <if test="application.masterName != null and application.masterName !=''">
+            and masterName like #{application.masterName}
+        </if>
+        and stuName = #{userName}
+        and status in (0,4)
+
+    </where>
+    limit #{begin},#{size} ;
+    </select>
+
+    <select id="selectTotalCountEd" resultType="java.lang.Integer">
+        select count(*)
+        from tb_application
+        <where>
+            <if test="application.courseName != null and application.courseName !=''">
+                courseName like #{application.courseName}
+            </if>
+            <if test="application.lecturerName != null and application.lecturerName !=''">
+                and lecturerName like #{application.lecturerName}
+            </if>
+            <if test="application.masterName != null and application.masterName !=''">
+                and masterName like #{application.masterName}
+            </if>
+            and stuName = #{userName}
+            and status in (0,4)
+        </where>
+    </select>
+
+    <select id="lecSelectApplicationIng" resultType="com.yrd.pojo.Application">
+        select *
+        from tb_application
+        <where>
+            <if test="application.courseName != null and application.courseName !=''">
+                courseName like #{application.courseName}
+            </if>
+            <if test="application.stuName != null and application.stuName !=''">
+                and stuName like #{application.stuName}
+            </if>
+            <if test="application.masterName != null and application.masterName !=''">
+                and masterName like #{application.masterName}
+            </if>
+            and lecturerName = #{userName}
+            and status = 2
+        </where>
+        limit #{begin},#{size} ;
+    </select>
+
+    <select id="lecSelectTotalCountIng" resultType="java.lang.Integer">
+        select count(*)
+        from tb_application
+        <where>
+            <if test="application.courseName != null and application.courseName !=''">
+                courseName like #{application.courseName}
+            </if>
+            <if test="application.stuName != null and application.stuName !=''">
+                and stuName like #{application.stuName}
+            </if>
+            <if test="application.masterName != null and application.masterName !=''">
+                and masterName like #{application.masterName}
+            </if>
+            and lecturerName = #{userName}
+            and status = 2
+        </where>
+
+    </select>
+
+    <select id="lecSelectApplicationEd" resultType="com.yrd.pojo.Application">
+        select *
+        from tb_application
+        <where>
+            <if test="application.courseName != null and application.courseName !=''">
+                courseName like #{application.courseName}
+            </if>
+            <if test="application.stuName != null and application.stuName !=''">
+                and stuName like #{application.stuName}
+            </if>
+            <if test="application.masterName != null and application.masterName !=''">
+                and masterName like #{application.masterName}
+            </if>
+            and lecturerName = #{userName}
+            and status in (3,4,0)
+        </where>
+        limit #{begin},#{size} ;
+    </select>
+
+    <select id="lecSelectTotalCountEd" resultType="java.lang.Integer">
+        select count(*)
+        from tb_application
+        <where>
+            <if test="application.courseName != null and application.courseName !=''">
+                courseName like #{application.courseName}
+            </if>
+            <if test="application.stuName != null and application.stuName !=''">
+                and stuName like #{application.stuName}
+            </if>
+            <if test="application.masterName != null and application.masterName !=''">
+                and masterName like #{application.masterName}
+            </if>
+            and lecturerName = #{userName}
+            and status in (3,4,0)
+        </where>
+
+
+    </select>
+    <select id="masSelectApplicationIng" resultType="com.yrd.pojo.Application">
+        select *
+        from tb_application
+        <where>
+            <if test="application.courseName != null and application.courseName !=''">
+                courseName like #{application.courseName}
+            </if>
+            <if test="application.stuName != null and application.stuName !=''">
+                and stuName like #{application.stuName}
+            </if>
+            <if test="application.lecturerName != null and application.lecturerName !=''">
+                and lecturerName like #{application.lecturerName}
+            </if>
+            and masterName = #{userName}
+            and status = 3
+        </where>
+        limit #{begin},#{size} ;
+    </select>
+
+    <select id="masSelectTotalCountIng" resultType="java.lang.Integer">
+        select count(*)
+        from tb_application
+        <where>
+            <if test="application.courseName != null and application.courseName !=''">
+                courseName like #{application.courseName}
+            </if>
+            <if test="application.stuName != null and application.stuName !=''">
+                and stuName like #{application.stuName}
+            </if>
+            <if test="application.lecturerName != null and application.lecturerName !=''">
+                and lecturerName like #{application.lecturerName}
+            </if>
+            and masterName = #{userName}
+            and status = 3
+        </where>
+    </select>
+
+    <select id="masSelectApplicationEd" resultType="com.yrd.pojo.Application">
+        select *
+        from tb_application
+        <where>
+            <if test="application.courseName != null and application.courseName !=''">
+                courseName like #{application.courseName}
+            </if>
+            <if test="application.stuName != null and application.stuName !=''">
+                and stuName like #{application.stuName}
+            </if>
+            <if test="application.lecturerName != null and application.lecturerName !=''">
+                and lecturerName like #{application.lecturerName}
+            </if>
+            and masterName = #{userName}
+            and status in (4,0)
+        </where>
+        limit #{begin},#{size} ;
+    </select>
+
+    <select id="masSelectTotalCountEd" resultType="java.lang.Integer">
+        select count(*)
+        from tb_application
+        <where>
+        <if test="application.courseName != null and application.courseName !=''">
+            courseName like #{application.courseName}
+        </if>
+        <if test="application.stuName != null and application.stuName !=''">
+            and stuName like #{application.stuName}
+        </if>
+        <if test="application.lecturerName != null and application.lecturerName !=''">
+            and lecturerName like #{application.lecturerName}
+        </if>
+        and masterName = #{userName}
+        and status in (4,0)
+        </where>
+    </select>
+
+    <select id="managerSelectAllApplication" resultType="com.yrd.pojo.Application">
+        select *
+        from tb_application
+        <where>
+            <if test="application.courseName != null and application.courseName !=''">
+                courseName like #{application.courseName}
+            </if>
+            <if test="application.stuName != null and application.stuName !=''">
+                and stuName like #{application.stuName}
+            </if>
+            <if test="application.lecturerName != null and application.lecturerName !=''">
+                and lecturerName like #{application.lecturerName}
+            </if>
+            <if test="application.masterName != null and application.masterName !=''">
+                and masterName like #{application.masterName}
+            </if>
+            <if test="application.status != null">
+                and status = #{application.status}
+            </if>
+        </where>
+        limit #{begin},#{size} ;
+    </select>
+
+    <select id="managerSelectAllApplicationCount" resultType="java.lang.Integer">
+        select count(*)
+        from tb_application
+        <where>
+            <if test="courseName != null and courseName !=''">
+                courseName like #{courseName}
+            </if>
+            <if test="stuName != null and stuName !=''">
+                and stuName like #{stuName}
+            </if>
+            <if test="lecturerName != null and lecturerName !=''">
+                and lecturerName like #{lecturerName}
+            </if>
+            <if test="masterName != null and masterName !=''">
+                and masterName like #{masterName}
+            </if>
+            <if test="status != null ">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
+</mapper>
