@@ -78,7 +78,7 @@
 ### 代码简单部署  
 - 用idea打开web01文件，使用maven内置的tomcat启动，[登陆界面http://localhost:8090/web01/html/userLogin.html](http://localhost:8090/web01/html/userLogin.html)
 ### 数据库脚本
-- 执行web01_sql脚本文件
+- 执行[web01_sql脚本文件](https://github.com/yrDong/neu-javaweb/tree/main/web01)
 
 ## 完成度介绍
 - 完成了基础功能，审批流未完成，未使用docker
